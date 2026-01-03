@@ -1,5 +1,5 @@
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculateTaxTest {
     
@@ -10,7 +10,16 @@ public class CalculateTaxTest {
         double result = calculateTax.calculateTax(amount);
         
         // Test that the method returns a value (currently returns 0.0 as per implementation)
-        assertNotNull(result, "Tax calculation result should not be null");
+        assertTrue(result >= 0, "Tax should be non-negative");
+    }
+    
+    @Test
+    public void testCalculateTaxForAmountNegative100000() {
+        CalculateTax calculateTax = new CalculateTax();
+        double amount = -100000.0;
+        double result = calculateTax.calculateTax(amount);
+        
+        // Test that the method returns a value (currently returns 0.0 as per implementation)
         assertTrue(result >= 0, "Tax should be non-negative");
     }
 }
